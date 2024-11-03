@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'forum',#new
     'rest_framework',#new
+    'corsheaders',#new
 ]
 
 MIDDLEWARE = [
@@ -49,7 +50,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',#new
+
 ]
+
+CORS_ALLOWED_ORIGINS = [ #new
+    "http://localhost:3000",  # Adresse de développement de React
+]
+
 
 ROOT_URLCONF = 'forum_experience.urls'
 
