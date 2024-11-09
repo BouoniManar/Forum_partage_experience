@@ -27,3 +27,30 @@ class Sujet(models.Model):
     def __str__(self):
         return self.title
  """
+
+
+
+
+
+
+
+
+
+
+
+
+
+""" from django.db import models
+from .Utilisateur import Utilisateur
+from .produit import Produit  # Assuming 'Produit' is defined in 'Produit.py' in the same directory
+
+class Sujet(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    Utilisateur = models.ForeignKey(Utilisateur, related_name='sujets', on_delete=models.CASCADE)
+    produit = models.ForeignKey(Produit, related_name='sujets', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+ """

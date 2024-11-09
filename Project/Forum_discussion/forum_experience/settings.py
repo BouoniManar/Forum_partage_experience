@@ -40,7 +40,18 @@ INSTALLED_APPS = [
     'forum',#new
     'rest_framework',#new
     'corsheaders',#new
+    'rest_framework_simplejwt',#new
+
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Permet l'accès à toutes les vues, y compris l'enregistrement
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
