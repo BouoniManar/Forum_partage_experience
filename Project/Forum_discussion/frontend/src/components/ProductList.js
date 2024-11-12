@@ -2,17 +2,18 @@ import React from 'react';
 
 function ProductList({ produits }) {
     return (
-        <div>
-            <h2>Produits Populaires</h2>
-            <div className="produits">
-                {produits.map(produit => (
-                    <div key={produit.id} className="produit">
-                        <h3>{produit.nom}</h3>
-                        <p>{produit.description}</p>
-                        <p><strong>Catégorie :</strong> {produit.categorie.nom}</p>
+        <div className="product-list">
+            {produits.map((product) => (
+                <div key={product.id} className="product-item">
+                    <img src={product.imageUrl} alt={product.name} className="product-image" />
+                    <div className="product-details">
+                        <h3>{product.name}</h3>
+                        <p>{product.description}</p>
+                        <p className="product-price">${product.price}</p>
+                        <p className="product-rating">⭐ {product.rating} / 5</p>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
     );
 }

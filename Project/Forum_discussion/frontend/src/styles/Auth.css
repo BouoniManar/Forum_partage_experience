@@ -1,0 +1,127 @@
+/* Auth.css */
+
+/* Container principal */
+.auth-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f9fa; /* Couleur de fond douce */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Titre */
+.auth-container h2 {
+    margin-bottom: 1.5rem;
+    color: #343a40;
+}
+
+/* Input fields */
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"],
+.auth-container select,
+.auth-container input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+/* Focus effect on input fields */
+.auth-container input[type="text"]:focus,
+.auth-container input[type="email"]:focus,
+.auth-container input[type="password"]:focus,
+.auth-container select:focus,
+.auth-container input[type="file"]:focus {
+    border-color: #495057;
+    outline: none;
+    box-shadow: 0 0 4px rgba(73, 80, 87, 0.3);
+}
+
+/* Bouton d'inscription */
+.auth-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #E8A0BF; /* Pink color */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-button:hover {
+    background-color: #d63384; /* Darker pink on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Lien vers la page de connexion */
+.auth-container .header {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.auth-container .header p {
+    color: #6c757d;
+}
+
+.auth-container .header a {
+    color: #ffffff; /* White color for link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-container .header a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #E8A0BF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    padding: 20px 40px; 
+    font-size: 20px; 
+    border-radius: 10px; 
+    width: 100%; 
+
+  
+}
+
+button:hover {
+    background-color: #d14b6e; 
+}
+
+
+/* Lien "Mot de passe oublié ?" */
+.forgot-password-link {
+    color: #E8A0BF; /* Pink color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.forgot-password-link:hover {
+    color: #d63384; /* Darker pink on hover */
+    text-decoration: underline;
+}
+
+
+
+/* Toast notification container */
+.Toastify__toast-container {
+    width: auto;
+    max-width: 400px;
+    font-size: 16px;
+}
+
+

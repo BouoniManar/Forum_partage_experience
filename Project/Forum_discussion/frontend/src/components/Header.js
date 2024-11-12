@@ -1,14 +1,14 @@
-// src/components/Header.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import routes from '../config/routes';
-import '../styles/Header.css';
+import '../styles/Header.css'; // Import du fichier CSS
 
 function Header() {
     const navigate = useNavigate();
 
     return (
         <header className="header">
+            <img src="/assets/image/logo.png" alt="Logo" className="logo" />
             <h1>Forum de Partage d'Expériences</h1>
             <div className="header-buttons">
                 <button 

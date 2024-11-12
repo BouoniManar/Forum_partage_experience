@@ -1,29 +1,64 @@
-
-
+/* Style général pour le header */
 .header {
-    background-color: #4CAF50;
+    background-color: #E8A0BF; /* Couleur de fond rose clair */
     color: white;
-    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo */
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Titre du forum */
+.header h1 {
+    flex: 1; /* Prend l'espace disponible entre le logo et les boutons */
+    text-align: center; /* Centre le texte dans son espace */
+    font-size: 1.8em;
+    margin: 0;
+    color: white;
+}
+
+/* Boutons Inscription et Connexion */
 .header-buttons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .header-button {
     background-color: white;
-    color: #4CAF50;
-    border: 1px solid #4CAF50;
-    padding: 0.5em 1em;
+    color: #E8A0BF; /* Correspond à la couleur d'arrière-plan du header */
+    border: 1px solid #E8A0BF;
+    padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .header-button:hover {
-    background-color: #4CAF50;
+    background-color: #E8A0BF;
     color: white;
+}
+
+
+
+.header-buttons .search-bar {
+    margin-right: 10px;
+}
+
+.header-buttons .notification-icon,
+.header-buttons .profile-icon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.header-buttons .language-selector {
+    margin-left: 10px;
 }

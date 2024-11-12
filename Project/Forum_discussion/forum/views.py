@@ -31,3 +31,6 @@ def register(request):
 # Custom TokenObtainPairView for login
 class CustomTokenObtainPairView(TokenObtainPairView):
     permission_classes = (AllowAny,)
+    
+    
+    

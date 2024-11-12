@@ -2,11 +2,13 @@ import React from 'react';
 
 function CategoriesList({ categories }) {
     return (
-        <div>
-            <h2>Catégories</h2>
+        <div className="categories-list">
+            <h3>Catégories</h3>
             <ul>
-                {categories.map(categorie => (
-                    <li key={categorie.id}>{categorie.nom}</li>
+                {categories.map((category) => (
+                    <li key={category.id}>
+                        <button>{category.name}</button> {/* Display category names */}
+                    </li>
                 ))}
             </ul>
         </div>

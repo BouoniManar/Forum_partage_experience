@@ -1,0 +1,17 @@
+/* Style général pour le footer */
+.footer {
+    background-color: #E8A0BF; /* Couleur de fond identique au header */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer p {
+    margin: 0;
+    color: white;
+}

@@ -1,45 +1,19 @@
-.home-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.header, .footer {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 0.1em;
-}
-
-.content {
-    display: flex;
-    flex: 1;
-}
-
-.sidebar {
-    width: 250px;
-    padding: 1em;
-    background-color: #f4f4f4;
-    border-right: 1px solid #ddd;
-}
-
-.main-content {
-    flex: 1;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-}
-
-.produits {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.produit {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    width: 200px;
+.about-section {
     background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about-section h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
 }

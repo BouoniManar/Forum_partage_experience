@@ -13,7 +13,8 @@ class Sujet(models.Model):
     
     
     
-    
+    def __str__(self):
+        return f"Sujet: {self.title} par {self.utilisateur.username} sur {self.produit.name}"
 
     """ def creer_sujet(self):
         pass
