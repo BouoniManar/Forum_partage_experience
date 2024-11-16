@@ -23,32 +23,32 @@ function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(formData);  // Log formData to ensure it's correct
+            console.log(formData); // Log formData to ensure it's correct
             const response = await axios.post('http://127.0.0.1:8000/forum/api/login/', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-
+    
             if (response.status === 200) {
                 const data = response.data;
-                console.log(data);  // Handle the JWT token here
-
-                // Show success toast
+                console.log(data); // Handle the JWT token here
+    
+                // Show success toast and navigate to the dashboard
                 toast.success('Login successful!', {
                     onClose: () => {
-                        // Navigate after toast is closed, giving time for it to appear
-                        navigate('/home');
+                        navigate('/UserDashboard'); // Redirection vers le tableau de bord
                     }
                 });
             } else {
-                toast.error('Login failed. Please check your credentials.');  // Error toast
+                toast.error('Login failed. Please check your credentials.');
             }
         } catch (error) {
             console.error('An error occurred during sign-in:', error);
-            toast.error('An error occurred. Please try again later.');  // Error toast
+            toast.error('An error occurred. Please try again later.');
         }
     };
+    
 
     return (
         <div className="auth-container">
@@ -56,7 +56,7 @@ function SignIn() {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="username"  // Changed to username
+                    name="username"  
                     placeholder="Nom d'utilisateur"
                     value={formData.username}
                     onChange={handleChange}
@@ -77,7 +77,7 @@ function SignIn() {
                 <Link to="/forgotpassword" className="forgot-password-link">Mot de passe oublié ?</Link>
             </p>
 
-            <ToastContainer position="top-right" autoClose={5000} />  {/* Ensure ToastContainer is placed here */}
+            <ToastContainer position="top-right" autoClose={5000} /> 
         </div>
     );
 }

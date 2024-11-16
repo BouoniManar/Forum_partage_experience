@@ -1,0 +1,47 @@
+.product-banner-item {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-banner-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-rating .star {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin: 0 2px;
+}
+
+.product-rating .star.filled {
+    color: #ffcc00;
+}
+
+/* Flèche du carrousel */
+.slick-prev:before,
+.slick-next:before {
+    color: #000; /* Couleur noire pour les flèches */
+}
+
+/* Espacement entre les slides */
+.slick-slide {
+    padding: 0 10px;
+}
+
+/* Style pour les produits */
+.product-banner-item {
+    text-align: center;
+}
+
+.product-image {
+    max-height: 200px;
+    object-fit: cover;
+}

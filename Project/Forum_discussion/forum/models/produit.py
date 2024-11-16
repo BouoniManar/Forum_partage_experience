@@ -12,6 +12,12 @@ class Produit(models.Model):
     def __str__(self):
         return f"Produit de {self.name} "
 
+
+
+
+
+
+
 """     def afficher_details(self):
         pass
 

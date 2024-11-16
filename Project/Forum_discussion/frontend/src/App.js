@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
+import UserDashboard from './components/User/UserDashboard';
+
 import ForgotPassword from './components/auth/ForgotPassword'; 
 import routes from './config/routes';
 import { ToastContainer } from 'react-toastify';  
@@ -18,6 +20,8 @@ function App() {
                 <Route path={routes.inscription} element={<SignUp />} />
                 <Route path={routes.connexion} element={<SignIn />} />
                 <Route path={routes.forgetpassword} element={<ForgotPassword />} />
+                <Route path={routes.UserDashboard} element={<UserDashboard/>} />
+
             </Routes>
 
             <ToastContainer />  
