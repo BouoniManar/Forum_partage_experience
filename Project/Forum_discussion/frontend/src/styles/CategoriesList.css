@@ -1,0 +1,45 @@
+/* Style général pour le conteneur */
+.categories-container {
+    background-color: #f9f9f9; /* Couleur de fond claire */
+    border: 1px solid #ddd; /* Bordure fine et grise */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 20px;
+    margin: 20px auto; /* Centrer horizontalement */
+    width: 80%; /* Largeur du cadre */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+/* Titre de la section */
+.categories-container h2 {
+    color: #333; /* Couleur du texte */
+    font-size: 1.5em;
+    text-align: center; /* Centré */
+    margin-bottom: 20px;
+}
+
+/* Liste des catégories */
+.categories-list {
+    list-style: none; /* Supprimer les puces */
+    padding: 0; /* Supprimer le padding par défaut */
+    margin: 0;
+}
+
+/* Chaque élément de la liste */
+.categories-list li {
+    margin: 10px 0;
+    text-align: center; /* Centrer les éléments */
+}
+
+/* Liens */
+.categories-list a {
+    text-decoration: none; /* Supprimer le soulignement */
+    color: #E8A0BF; /* Couleur principale */
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Transition douce pour le hover */
+}
+
+/* Effet hover sur les liens */
+.categories-list a:hover {
+    color: #b86995; /* Couleur au survol */
+}

@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-
+from .models import Categorie
+    
+    
+    
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -15,3 +18,15 @@ class UserSerializer(serializers.ModelSerializer):
             password=validated_data['password']
         )
         return user
+    
+    
+
+
+class CategorieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categorie
+        fields = ['id', 'name', 'description']
+
+
+
+

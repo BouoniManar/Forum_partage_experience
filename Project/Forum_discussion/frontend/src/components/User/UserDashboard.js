@@ -1,12 +1,32 @@
-import React from 'react';
+// DashboardUser.js
+import React, { useState } from 'react';
+import CategoriesList from '../CategoriesList';
+import Header from '../Header'; // Importer le Header modifié
 
-function UserDashboard() {
+const DashboardUser = () => {
+    const [searchTerm, setSearchTerm] = useState(''); // État pour gérer la recherche
+
+    // Gestion du changement dans la barre de recherche
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
     return (
         <div>
-            <h1>Bienvenue sur le tableau de bord utilisateur</h1>
-            {/* Ajoutez ici d'autres éléments du tableau de bord */}
+            <Header /> {/* Utiliser le Header avec les nouveaux boutons */}
+            <div className="dashboard-header">
+                <h2>Explorez Nos Catégories</h2>
+                <input
+                    type="text"
+                    placeholder="Rechercher une catégorie..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    className="search-bar"
+                />
+            </div>
+            <CategoriesList searchTerm={searchTerm} /> {/* Passer le terme de recherche */}
         </div>
     );
-}
+};
 
-export default UserDashboard;
+export default DashboardUser;

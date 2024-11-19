@@ -19,27 +19,31 @@
 /* Titre du forum */
 .header h1 {
     flex: 1; /* Prend l'espace disponible entre le logo et les boutons */
-    text-align: center; /* Centre le texte dans son espace */
+    text-align: center;
     font-size: 1.8em;
     margin: 0;
     color: white;
+    white-space: nowrap; /* Empêche le titre de se casser en plusieurs lignes */
 }
 
-/* Boutons Inscription et Connexion */
+/* Boutons Inscription, Connexion et autres */
 .header-buttons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 10px; /* Espacement entre les boutons */
 }
 
 .header-button {
     background-color: white;
-    color: #E8A0BF; /* Correspond à la couleur d'arrière-plan du header */
+    color: #E8A0BF;
     border: 1px solid #E8A0BF;
-    padding: 10px 15px;
-    cursor: pointer;
+    padding: 8px 16px;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap; /* Empêche le texte de se casser en plusieurs lignes */
     transition: background-color 0.3s, color 0.3s;
+    font-size: 0.9rem;
 }
 
 .header-button:hover {
@@ -47,18 +51,19 @@
     color: white;
 }
 
+/* Responsiveness pour petits écrans */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .header-buttons {
+        flex-wrap: wrap; /* Autorise les boutons à passer à la ligne si nécessaire */
+        justify-content: center;
+    }
 
-.header-buttons .search-bar {
-    margin-right: 10px;
-}
-
-.header-buttons .notification-icon,
-.header-buttons .profile-icon {
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.header-buttons .language-selector {
-    margin-left: 10px;
+    .header-button {
+        width: auto;
+    }
 }

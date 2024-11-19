@@ -10,6 +10,7 @@ import routes from './config/routes';
 import { ToastContainer } from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';  
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import CategoryDetails from './components/CategoryDetails';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
                 <Route path={routes.connexion} element={<SignIn />} />
                 <Route path={routes.forgetpassword} element={<ForgotPassword />} />
                 <Route path={routes.UserDashboard} element={<UserDashboard/>} />
+                <Route path={routes.CategoryDetails} element={<CategoryDetails/>} />
+
 
             </Routes>
 

@@ -124,4 +124,11 @@ button:hover {
     font-size: 16px;
 }
 
+/* Custom styling for toast notifications */
+.Toastify__toast--success,
+.Toastify__toast--error {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;    /* Hide any overflowed text */
+    text-overflow: ellipsis; /* Show ellipsis if the message is too long */
+}
 

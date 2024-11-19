@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios'; // Import Axios
-import { toast, ToastContainer } from 'react-toastify';  // Import react-toastify
-import 'react-toastify/dist/ReactToastify.css';  // Import CSS for toasts
+import axios from 'axios'; 
+import { toast, ToastContainer } from 'react-toastify';  
+import 'react-toastify/dist/ReactToastify.css'; 
 import '../../styles/Auth.css';
 
 function SignIn() {
     const [formData, setFormData] = useState({
-        username: '',  // Use username instead of email
+        username: '',  
         password: '',
     });
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(formData); // Log formData to ensure it's correct
+            console.log(formData); 
             const response = await axios.post('http://127.0.0.1:8000/forum/api/login/', formData, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,22 +33,41 @@ function SignIn() {
             if (response.status === 200) {
                 const data = response.data;
                 console.log(data); // Handle the JWT token here
+
+                // Stocker le token dans le localStorage
+                localStorage.setItem('userToken', data.token); // Assurez-vous que le backend retourne un token dans `data.token`
     
-                // Show success toast and navigate to the dashboard
-                toast.success('Login successful!', {
+                // Afficher un toast de succès et rediriger vers le tableau de bord
+                toast.success('Connexion réussie!', {
                     onClose: () => {
-                        navigate('/UserDashboard'); // Redirection vers le tableau de bord
+                        navigate('/UserDashboard'); // Rediriger vers le tableau de bord
+                    },
+                    style: {
+                        whiteSpace: 'nowrap', // Prevent line breaks
+                        textOverflow: 'ellipsis', // Add ellipsis if the message is too long
+                        overflow: 'hidden',
                     }
                 });
             } else {
-                toast.error('Login failed. Please check your credentials.');
+                toast.error('Échec de la connexion. Vérifiez vos identifiants.', {
+                    style: {
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        overflow: 'hidden',
+                    }
+                });
             }
         } catch (error) {
-            console.error('An error occurred during sign-in:', error);
-            toast.error('An error occurred. Please try again later.');
+            console.error('Une erreur est survenue lors de la connexion :', error);
+            toast.error('Une erreur est survenue. Essayez à nouveau plus tard.', {
+                style: {
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                    overflow: 'hidden',
+                }
+            });
         }
     };
-    
 
     return (
         <div className="auth-container">
