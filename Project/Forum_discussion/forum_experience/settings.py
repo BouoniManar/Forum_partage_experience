@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+   
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -41,8 +41,12 @@ INSTALLED_APPS = [
     'rest_framework',#new
     'corsheaders',#new
     'rest_framework_simplejwt',#new
+    'jazzmin',#new
+     'django.contrib.admin'
 
 ]
+
+AUTH_USER_MODEL = 'forum.Utilisateur'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

@@ -4,3 +4,5 @@ from .sujet import Sujet
 from .commentaire import Commentaire
 from .categorie import Categorie
 from .avis import Avis
+from .favoris import Favoris
+

@@ -1,4 +1,3 @@
-import CategoryDetails from "../components/CategoryDetails";
 
 const routes = {
     home: '/',
@@ -6,7 +5,9 @@ const routes = {
     connexion: '/connexion',
     forgetpassword:'/forgotpassword',
     UserDashboard:'/UserDashboard',
-    CategoryDetails:"/categories/:id"
+    CategoryDetails:"/categories/:id",
+    MyPosts:"my-posts/:userId",
+    EditPosts:"/edit-posts/:postId" 
 
 
 };

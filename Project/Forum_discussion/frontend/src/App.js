@@ -11,6 +11,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';  
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import CategoryDetails from './components/CategoryDetails';
+import MyPosts from './components/User/MyPosts';
+import EditPosts from './components/User/EditPosts';
 
 
 function App() {
@@ -23,6 +25,9 @@ function App() {
                 <Route path={routes.forgetpassword} element={<ForgotPassword />} />
                 <Route path={routes.UserDashboard} element={<UserDashboard/>} />
                 <Route path={routes.CategoryDetails} element={<CategoryDetails/>} />
+                <Route path={routes.MyPosts} element={<MyPosts/>} />
+                <Route path={routes.EditPosts} element={<EditPosts/>} />
+
 
 
             </Routes>

@@ -35,9 +35,13 @@ const CategoriesList = () => {
                 {/* La colonne déplace le contenu à gauche */}
                 <div className="col-md-4">
                     <div className="card shadow-sm">
-                        <div className="card-header bg-primary text-white">
-                            <h4>Liste de Catégories</h4>
-                        </div>
+                    <div
+    className="card-header"
+    style={{ backgroundColor: "#E8A0BF", color: "white" }}
+>
+    <h4>Liste de Catégories</h4>
+</div>
+
                         <div className="card-body">
                             <ul className="list-group">
                                 {categories.map(category => (
