@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify'; // Importer react-toastify
-import 'react-toastify/dist/ReactToastify.css'; // Importer les styles
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const EditPosts = () => {
-    const { postId } = useParams(); // Récupérer l'ID du post
+    const { postId } = useParams(); 
     const [post, setPost] = useState({ title: '', content: '', utilisateur: 1, categorie: 2 });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const navigate = useNavigate(); // Pour la redirection après modification
+    const navigate = useNavigate(); 
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/forum/api/sujets/${postId}/`)
-            .then(response => {
+        axios.get(`http://127.0.0.1:8000/forum/api/sujets/detail/${postId}/`)
+            .then((response) => {
+                const data = response.data;
                 setPost({
-                    title: response.data.title,
-                    content: response.data.content,
-                    utilisateur: response.data.utilisateur,  // Ajouter utilisateur si nécessaire
-                    categorie: response.data.categorie      // Ajouter catégorie si nécessaire
+                    title: data.title,
+                    content: data.content,
+                    utilisateur: data.utilisateur,
+                    categorie: data.categorie
                 });
                 setLoading(false);
             })
@@ -27,28 +28,30 @@ const EditPosts = () => {
                 setLoading(false);
             });
     }, [postId]);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Envoyer les données avec utilisateur et categorie
+       
         const updatedPost = {
             title: post.title,
             content: post.content,
-            utilisateur: post.utilisateur,  // Assurez-vous que l'utilisateur est correctement passé
-            categorie: post.categorie       // Assurez-vous que la catégorie est correctement passée
+            categorie: post.categorie,
+            utilisateur: post.utilisateur 
         };
+        
 
-        console.log("Données envoyées:", updatedPost);  // Vérifiez ce qui est envoyé
+        console.log("Données envoyées:", updatedPost); 
 
-        axios.put(`http://127.0.0.1:8000/forum/api/sujets/${postId}/`, updatedPost)
+        axios.put(`http://127.0.0.1:8000/forum/api/sujets/detail/${postId}/`, updatedPost)
             .then(() => {
-                // Afficher un toast de succès
+                
                 toast.success('Post modifié avec succès!');
-                // Rediriger vers la page MyPosts
+                
                 setTimeout(() => {
                     navigate(`/my-posts/${postId}`);
-                }, 2000); // Attendre 2 secondes pour laisser le toast s'afficher
+                }, 2000); 
             })
             .catch((error) => {
                 console.error("Erreur lors de la mise à jour du sujet:", error.response ? error.response.data : error);

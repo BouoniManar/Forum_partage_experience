@@ -11,17 +11,14 @@ class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
-        model = Utilisateur  # Utilisez le modèle personnalisé ici
-        fields = ['id', 'username', 'email', 'password', 'role', 'profile_picture']
+        model = User
+        fields = ['id', 'username', 'email', 'password']
 
     def create(self, validated_data):
-        # Assurez-vous d'inclure le champ role et profile_picture s'ils sont nécessaires
-        user = Utilisateur.objects.create_user(
+        user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
-            password=validated_data['password'],
-            role=validated_data.get('role', 'utilisateur'),  # Valeur par défaut si non spécifiée
-            profile_picture=validated_data.get('profile_picture', None)  # Valeur par défaut si non spécifiée
+            password=validated_data['password']
         )
         return user
     

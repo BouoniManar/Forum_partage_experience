@@ -1,3 +1,4 @@
+from venv import logger
 from django.shortcuts import render
 from forum.models.avis import Avis
 from forum.models.favoris import Favoris
@@ -18,15 +19,14 @@ from forum.models import Commentaire
 from .serializers import CommentaireSerializer
 
 
-# Registration API - User registration
 @api_view(['POST'])
 def register(request):
     if request.method == 'POST':
-        # Sérialiser les données utilisateur
+        # Serialize the user data
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            # Créer des tokens JWT
+            # Create JWT tokens
             refresh = RefreshToken.for_user(user)
             return Response({
                 'user': serializer.data,
@@ -34,7 +34,6 @@ def register(request):
                 'refresh_token': str(refresh),
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 # Custom TokenObtainPairView for login
 class CustomTokenObtainPairView(TokenObtainPairView):
@@ -85,6 +84,18 @@ class SujetAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, id):
+        try:
+            sujet = Sujet.objects.get(id=id)
+            sujet.delete()
+            return Response({"message": "Sujet supprimé avec succès"}, status=status.HTTP_204_NO_CONTENT)
+        except Sujet.DoesNotExist:
+            logger.warning(f"Tentative de suppression d'un sujet inexistant avec l'ID {id}")
+            return Response({"error": "Sujet introuvable"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            logger.error(f"Erreur lors de la suppression du sujet avec l'ID {id}: {e}")
+            return Response({"error": "Erreur serveur"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class SujetDetailView(APIView):
     def get(self, request, id):
@@ -105,6 +116,10 @@ class SujetDetailView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Sujet.DoesNotExist:
             return Response({"error": "Sujet introuvable"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            return Response({"error": f"Erreur serveur : {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def delete(self, request, id):
         try:
@@ -112,8 +127,14 @@ class SujetDetailView(APIView):
             sujet.delete()
             return Response({"message": "Sujet supprimé avec succès"}, status=status.HTTP_204_NO_CONTENT)
         except Sujet.DoesNotExist:
+            logger.warning(f"Tentative de suppression d'un sujet inexistant avec l'ID {id}")
             return Response({"error": "Sujet introuvable"}, status=status.HTTP_404_NOT_FOUND)
-        
+        except Exception as e:
+            logger.error(f"Erreur lors de la suppression du sujet avec l'ID {id}: {e}")
+            return Response({"error": "Erreur serveur"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+    
         
     
     

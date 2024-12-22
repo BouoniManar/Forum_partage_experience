@@ -15,8 +15,10 @@ from .views import (
 
 urlpatterns = [
     # Authentification
-    path('api/register/', register, name='register'),
+      path('api/register/', register, name='register'),
+    # path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/login/', CustomTokenObtainPairView.as_view(), name='login'),  # Login endpoint
+
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # Catégories
@@ -25,8 +27,8 @@ urlpatterns = [
 
     # Sujets
     path('api/sujets/', SujetAPIView.as_view(), name='sujets'),  # Liste et création de sujets
-    path('api/sujets/<int:id>/', SujetDetailView.as_view(), name='sujet_detail'),  # Détails, modification, suppression
-
+    path('api/sujets/<int:id>/', SujetAPIView.as_view(), name='sujet-delete'),  # DELETE avec ID
+    path('api/sujets/detail/<int:id>/', SujetDetailView.as_view(), name='sujet-detail'),  # GET et PUT
     # Commentaires
     path('api/commentaires/', CommentaireAPIView.as_view(), name='commentaires'),
     path('api/commentaires/<int:id>/', CommentaireAPIView.as_view(), name='commentaire_detail'), # Suppression

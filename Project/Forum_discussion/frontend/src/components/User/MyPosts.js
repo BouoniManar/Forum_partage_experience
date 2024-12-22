@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const MyPosts = () => {
     const { userId } = useParams(); // Retrieve the userId from the URL
@@ -21,29 +22,47 @@ const MyPosts = () => {
             });
     }, [userId]);
 
-    // Delete post handler with confirmation
-    const handleDelete = (postId) => {
-        const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer ce sujet ?"); // Confirmation prompt
-        if (confirmDelete) {
+    // Delete post handler with SweetAlert2 confirmation
+    const handleDelete = async (postId) => {
+        const result = await Swal.fire({
+            title: 'Êtes-vous sûr ?',
+            text: "Vous ne pourrez pas revenir en arrière !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Oui, supprimer !',
+            cancelButtonText: 'Annuler',
+        });
+
+        if (result.isConfirmed) {
             // Optimistically remove the post from the UI
             setMyPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
-    
+
             // Send the delete request
             axios.delete(`http://127.0.0.1:8000/forum/api/sujets/${postId}/`)
                 .then(() => {
-                    // If successful, no further action needed
+                    Swal.fire(
+                        'Supprimé !',
+                        'Le sujet a été supprimé avec succès.',
+                        'success'
+                    );
                 })
                 .catch((error) => {
                     console.error("Error deleting post:", error);
                     setError('Erreur lors de la suppression du sujet');
-                    
-                    // If deletion failed, restore the post
+
+                    Swal.fire(
+                        'Erreur',
+                        'Une erreur est survenue lors de la suppression.',
+                        'error'
+                    );
+
+                    // Restore the post if deletion failed
                     setMyPosts(prevPosts => [...prevPosts, myPosts.find(post => post.id === postId)]);
                 });
         }
     };
-    
-    
 
     if (loading) {
         return <div className="text-center mt-4">Chargement...</div>;

@@ -46,15 +46,22 @@ INSTALLED_APPS = [
 
 ]
 
-AUTH_USER_MODEL = 'forum.Utilisateur'
+#AUTH_USER_MODEL = 'forum.Utilisateur'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Permet l'accès à toutes les vues, y compris l'enregistrement
-    ],
+    
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
 }
 
 MIDDLEWARE = [
